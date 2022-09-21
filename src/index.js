@@ -1,6 +1,7 @@
 // config inicial
 
 import database from './config/database'
+import UserModel from './models/users'
 
 const express = require('express')
 const app = express()
