@@ -17,7 +17,7 @@ const schema = new Mongoose.Schema({
     versionKey: false,
 }) 
 
-const UserModel = Mongoose.model('User', schema)
+const UserModel = Mongoose.model('Person', schema)
 
 export default UserModel
  

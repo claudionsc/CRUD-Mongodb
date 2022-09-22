@@ -1,15 +1,21 @@
 // config inicial
 
 import database from './config/database'
-import UserModel from './models/users'
+import userRoute from './routes/userRoutes'
+import Express  from 'express'
+import bodyParser from 'body-parser'
 
-const express = require('express')
-const app = express()
+const app = Express()
+
+// entregar uma porta 
+const port = 3000
 
 // forma de ler JSON - usando middlewares
-app.use(express.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: false }))
 
-app.use(express.json())
+app.use(Express.json())
+
+userRoute(app)
 
 // rota inicial / endpoint 
 app.get('/', (req, res) => {
@@ -18,8 +24,7 @@ app.get('/', (req, res) => {
     res.json({ message: 'Tudo certo!' })
 })
 
-// entregar uma porta 
-const port = 3000
+
 
 database.connect().then(() => {
     app.listen(port, () => console.log('Api rodando'))
